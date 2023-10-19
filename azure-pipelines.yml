@@ -30,7 +30,7 @@ steps:
     PACT_BROKER_PUBLISH_VERIFICATION_RESULTS: true
     GIT_COMMIT: $(Build.SourceVersion)
     GIT_BRANCH: $(Build.SourceBranchName)
-    PACTICIPANT: "pactflow-example-provider-dotnet"
+    PACTICIPANT: "pactflow-example-provider"
 - script: |
     docker run \
       --rm \
@@ -48,7 +48,7 @@ steps:
     PACT_BROKER_PUBLISH_VERIFICATION_RESULTS: true
     GIT_COMMIT: $(Build.SourceVersion)
     GIT_BRANCH: $(Build.SourceBranchName)
-    PACTICIPANT: "pactflow-example-provider-dotnet"
+    PACTICIPANT: "pactflow-example-provider"
 
 - script: |
     docker run \
@@ -67,4 +67,4 @@ steps:
     PACT_BROKER_PUBLISH_VERIFICATION_RESULTS: true
     GIT_COMMIT: $(Build.SourceVersion)
     GIT_BRANCH: $(Build.SourceBranchName)
-    PACTICIPANT: "pactflow-example-provider-dotnet"
+    PACTICIPANT: "pactflow-example-provider"

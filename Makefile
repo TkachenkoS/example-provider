@@ -72,13 +72,13 @@ no_deploy:
 	@echo "Not deploying as not on master branch"
 
 can_i_deploy: .env
-	@"${PACT_CLI}" broker can-i-deploy --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --to-environment walkion
+	@"${PACT_CLI}" broker can-i-deploy --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --to-environment production
 
 deploy_app:
-	@echo "Deploying to walkion"
+	@echo "Deploying to production"
 
 record_deployment: .env
-	@"${PACT_CLI}" broker record_deployment --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --environment walkion
+	@"${PACT_CLI}" broker record_deployment --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --environment production
 
 ## =====================
 ## PactFlow set up tasks
