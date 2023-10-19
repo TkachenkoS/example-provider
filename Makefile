@@ -1,5 +1,5 @@
-PACTICIPANT := "pactflow-example-provider-dotnet"
-GITHUB_REPO := "pactflow/pactflow-example-provider-dotnet"
+PACTICIPANT := "pactflow-example-provider"
+GITHUB_REPO := "pactflow/pactflow-example-provider"
 PACT_CHANGED_WEBHOOK_UUID := "46ed3f10-d03f-43cd-b945-ce45ff42d324"
 TRIGGER_PROVIDER_BUILD_URL := "https://api.travis-ci.com/repo/pactflow%2Fexample-provider-dotnet/requests"
 PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:latest"
