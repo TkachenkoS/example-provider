@@ -17,11 +17,37 @@ jobs:
   verify-contract-requiring-verification:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout default branch if user manually provides pact URL
+        uses: actions/checkout@v3
+        if: ${{ github.event.inputs.PACT_URL }}
+      - name: checkout specific SHA if webhook providers pact URL
+        uses: actions/checkout@v3
+        if: ${{ github.event.client_payload.pact_url }}
+        with:
+          ref: ${{env.GIT_COMMIT}}
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: '3.1.x'
       - run: docker pull pactfoundation/pact-cli:latest
-      - name: Build
-        run: GIT_BRANCH=${GITHUB_REF:11} make ci_webhook
+      - name: ${{env.DESCRIPTION}}
+        run: make ci_webhook
+
+
+
+      #   name: checkout default branch if user manually provides pact URL
+      #   uses: actions/checkout@v3
+      #   if: ${{ github.event.inputs.PACT_URL }}
+      # - name: checkout specific SHA if webhook providers pact URL
+      #   uses: actions/checkout@v3
+      #   if: ${{ github.event.client_payload.pact_url }}
+      #   with:
+      #     ref: ${{env.GIT_COMMIT}}
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '16'
+      # - run: docker pull pactfoundation/pact-cli:latest
+      # - name: Install
+      #   run: npm i
+      # - name: ${{env.DESCRIPTION}}
+      #   run: make ci_webhook
