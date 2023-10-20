@@ -3,7 +3,12 @@ name: contract_requiring_verification_published
 on:
   repository_dispatch:
     types:
-      - pact_changed
+      - contract_requiring_verification_published
+  workflow_dispatch:
+    inputs:
+      PACT_URL:
+        description: URL of pact to verify
+        required: true
 
 env:
   PACT_BROKER_BASE_URL: ${{ secrets.PACT_BROKER_BASE_URL }}
